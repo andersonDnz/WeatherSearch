@@ -32,6 +32,15 @@ const Home = () => {
     }
   };
 
+  let content;
+  if (Object.keys(data).length === 0 && error === "") {
+    content = (
+      <div>
+        <h2>Bem vindo ao ClimaTempo!</h2>
+      </div>
+    );
+  }
+
   return (
     <div
       className="bg-cover bg-gradient-to-r 
@@ -43,10 +52,10 @@ const Home = () => {
           <Input handleSearch={handleSearch} setLocation={setLocation} />
 
           <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 round-xl italic ">
-            Weather
+            ClimaTempo
           </h1>
         </div>
-        {data.current ? <div> {data.current.temp_f}</div> : null}
+        {content}
       </div>
     </div>
   );
