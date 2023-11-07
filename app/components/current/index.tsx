@@ -1,6 +1,7 @@
 import React from "react";
 
 import { getCurrentDate } from "@/app/utils/currentDate";
+import { MdLocationOn } from "react-icons/md";
 
 const Current = ({ data }) => {
   const currentDate = getCurrentDate();
@@ -14,11 +15,29 @@ const Current = ({ data }) => {
         </div>
         {weatherIcon && (
           <div>
-            <img src={weatherIcon} alt={data.current.condition.text} />
+            <img
+              className="w-[50px] object-cover"
+              src={weatherIcon}
+              alt={data.current.condition.text}
+            />
           </div>
         )}
       </div>
-      <p>{data.current.temp_f.toFixed()}</p>
+      <div>
+        <p className="text-5-1 text-white">
+          {data.current.temp_f.toFixed()}
+          <span>°</span>
+        </p>
+        <span className="text-white">{data.current.condition.text}</span>
+      </div>
+      <div>
+        <div className="flex items-center text-black bg-white/90 px-2 py-2 round-xl">
+          <MdLocationOn />
+          <span>
+            {data.location.name}, {data.location.region}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
