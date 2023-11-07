@@ -15,7 +15,7 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
         placeholder="Search City"
         className="w-full bg-transparent border-b-2 placeholder-white outline-none text-white"
         onKeyDown={handleSearch}
-        onChange={ (e) => setLocation(e.target.value)}
+        onChange={(e) => setLocation(e.target.value)}
       />
       <div className="ml-[-25px] text-white cursor-pointer">
         <AiOutlineSearch />

@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 
 import Input from "./components/input";
+import Current from "./components/current";
+import WeekForecast from "./components/weekForeCast";
+import Details from "./components/details";
 
 const Home = () => {
   const [data, setData] = useState({});
@@ -23,20 +26,32 @@ const Home = () => {
         setData(data);
         setLocation("");
         setError("");
-      } catch {
-        error;
-      }
-      {
+      } catch (error) {
         setError("Cidade não encontrada");
+        setData({});
       }
     }
   };
 
   let content;
+
   if (Object.keys(data).length === 0 && error === "") {
     content = (
       <div>
         <h2>Bem vindo ao ClimaTempo!</h2>
+      </div>
+    );
+  } else if (error != "") {
+    content = (
+      <div>
+        <p>Cidade não encontrada</p>
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        <Current />
+        <WeekForecast />
       </div>
     );
   }
