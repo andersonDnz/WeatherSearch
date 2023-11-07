@@ -49,10 +49,15 @@ const Home = () => {
     );
   } else {
     content = (
+      <>
       <div>
-        <Current />
+        <Current data={data}/>
         <WeekForecast />
       </div>
+      <div>
+        <Details/>
+      </div>
+      </>
     );
   }
 
