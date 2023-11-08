@@ -50,13 +50,13 @@ const Home = () => {
   } else {
     content = (
       <>
-      <div>
-        <Current data={data}/>
-        <WeekForecast />
-      </div>
-      <div>
-        <Details/>
-      </div>
+        <div>
+          <Current data={data} />
+          <WeekForecast data={data} />
+        </div>
+        <div>
+          <Details />
+        </div>
       </>
     );
   }
