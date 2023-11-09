@@ -37,13 +37,14 @@ const Home = () => {
 
   if (Object.keys(data).length === 0 && error === "") {
     content = (
-      <div>
-        <h2>Bem vindo ao ClimaTempo!</h2>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <h2 className="text-3xl font-bold mb-4">Bem vindo ao ClimaTempo!</h2>
+        <p className="text-xl">Veja como está o clima da sua cidade!</p>
       </div>
     );
   } else if (error != "") {
     content = (
-      <div>
+      <div className="text-white text-center h-screen mt-[5rem]">
         <p>Cidade não encontrada</p>
       </div>
     );
