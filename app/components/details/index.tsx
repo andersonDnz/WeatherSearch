@@ -14,7 +14,7 @@ interface WeatherDetailsProps {
       wind_dir: string;
       pressure_mb: number;
       vis_km: number;
-      fellslike_f: number;
+      feelslike_f: number;
     };
     forecast: {
       forecastday: {
@@ -27,7 +27,7 @@ interface WeatherDetailsProps {
   };
 }
 
-const Details = ({ data }: WeatherDetailsProps) => {
+const Details = ({ data }: { data: any }) => {
   return (
     <div className="p-12">
       <h1 className="mb-4 text-2xl text-white">Detalhes</h1>

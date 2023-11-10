@@ -20,7 +20,7 @@ interface CurrentProps {
   };
 }
 
-const Current = ({ data }: CurrentProps) => {
+const Current = ({ data }: { data: any }) => {
   const currentDate = getCurrentDate();
   const weatherIcon = data.current.condition.icon;
   return (

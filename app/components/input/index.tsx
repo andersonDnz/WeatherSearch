@@ -5,9 +5,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 interface InputProps {
   handleSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   setLocation: React.Dispatch<React.SetStateAction<string>>;
+  handleButtonClick: () => void;
 }
 
-const Input = ({ handleSearch, setLocation }: InputProps) => {
+const Input = ({
+  handleSearch,
+  setLocation,
+  handleButtonClick,
+}: InputProps) => {
   return (
     <form className=" flex items-center md:w-2/4 w-full order-2 md:order-1">
       <input
@@ -18,7 +23,7 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
         onChange={(e) => setLocation(e.target.value)}
       />
       <div className="ml-[-25px] text-white cursor-pointer">
-        <AiOutlineSearch />
+        <AiOutlineSearch onClick={handleButtonClick} />
       </div>
     </form>
   );
