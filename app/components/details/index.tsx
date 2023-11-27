@@ -43,7 +43,7 @@ const Details = ({ data }: { data: any }) => {
         </div>
         <div className="bg-white/50 flex p-4 items-center justify-center gap-6 rounded-xl">
           <div className="text-2xl ">
-            <h3>Umidade</h3>
+            <h3>Humidade</h3>
             <h3>{data.current.humidity}%</h3>
           </div>
           <div>

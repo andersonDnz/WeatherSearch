@@ -22,6 +22,7 @@ const Navbar = () => {
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     setButtonClicked(false);
     if (e.key === "Enter") {
+      e.preventDefault()
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -40,7 +41,8 @@ const Navbar = () => {
 
   const handleButtonClick = () => {
     setButtonClicked(true);
-    handleSearch({ key: "Enter" } as React.KeyboardEvent<HTMLInputElement>);
+    handleSearch({key: "Enter" } as React.KeyboardEvent<HTMLInputElement>);
+    
   };
 
   let content;
