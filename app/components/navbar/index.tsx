@@ -20,9 +20,9 @@ const Navbar = () => {
   const url = `http://api.weatherapi.com/v1/forecast.json?key=fd0a2a4fd6424b1282d11930230111&q=${location}&days=7&aqi=yes&alerts=yes`;
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setButtonClicked(false);
-    if (e.key === "Enter") {
-      e.preventDefault()
+    setButtonClicked(false)
+    if (e.key === "Enter"){
+      e.preventDefault();
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -41,13 +41,13 @@ const Navbar = () => {
 
   const handleButtonClick = () => {
     setButtonClicked(true);
-    handleSearch({key: "Enter" } as React.KeyboardEvent<HTMLInputElement>);
-    
+    handleSearch({ key: "Enter", preventDefault: () => {} } as React.KeyboardEvent<HTMLInputElement>);
   };
-
+  
   let content;
 
   if ((Object.keys(data).length === 0 && error === "") || buttonClicked) {
+    
     content = (
       <div className="text-white text-center h-screen mt-[5rem]">
         <h2 className="text-3xl font-bold mb-4">Bem vindo ao ClimaTempo!</h2>
