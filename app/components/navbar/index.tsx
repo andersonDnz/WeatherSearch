@@ -7,6 +7,7 @@ import WeekForecast from "../weekForeCast";
 import Details from "../details";
 import Input from "../input";
 import FillGrid from "../fillGrid";
+import Notifications from "../notification";
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
@@ -84,6 +85,7 @@ const Navbar = () => {
         {/* INPUT AND LOGO*/}
         <div className="flex flex-col md:flex-row justify-between items-center p-12 ">
           <FillGrid />
+          <Notifications/>
           <Input
             handleSearch={handleSearch}
             setLocation={setLocation}
