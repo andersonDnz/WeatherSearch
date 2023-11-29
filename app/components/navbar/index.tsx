@@ -6,7 +6,7 @@ import Current from "../current";
 import WeekForecast from "../weekForeCast";
 import Details from "../details";
 import Input from "../input";
-
+import FillGrid from "../fillGrid";
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     setButtonClicked(false)
-    if (e.key === "Enter"){
+    if (e.key === "Enter") {
       e.preventDefault();
       try {
         const response = await fetch(url);
@@ -41,13 +41,13 @@ const Navbar = () => {
 
   const handleButtonClick = () => {
     setButtonClicked(true);
-    handleSearch({ key: "Enter", preventDefault: () => {} } as React.KeyboardEvent<HTMLInputElement>);
+    handleSearch({ key: "Enter", preventDefault: () => { } } as React.KeyboardEvent<HTMLInputElement>);
   };
-  
+
   let content;
 
   if ((Object.keys(data).length === 0 && error === "") || buttonClicked) {
-    
+
     content = (
       <div className="text-white text-center h-screen mt-[5rem]">
         <h2 className="text-3xl font-bold mb-4">Bem vindo ao ClimaTempo!</h2>
@@ -79,9 +79,11 @@ const Navbar = () => {
       className="bg-cover bg-gradient-to-r 
   from-blue-500 to-blue-300 h-fit"
     >
+
       <div className="bg-white/25 w-full flex flex-col h-fit">
         {/* INPUT AND LOGO*/}
         <div className="flex flex-col md:flex-row justify-between items-center p-12 ">
+          <FillGrid />
           <Input
             handleSearch={handleSearch}
             setLocation={setLocation}
