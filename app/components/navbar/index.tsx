@@ -8,7 +8,9 @@ import Details from "../details";
 import Input from "../input";
 import FillGrid from "../fillGrid";
 import Notifications from "../notification";
-import DarkMode from "../darkMode";
+import DarkModeToggle from "../darkMode";
+import ThemeProvider from "../themeProvider";
+
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
@@ -18,6 +20,11 @@ const Navbar = () => {
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  }
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=fd0a2a4fd6424b1282d11930230111&q=${location}&days=7&aqi=yes&alerts=yes`;
 
@@ -77,30 +84,33 @@ const Navbar = () => {
   }
 
   return (
-    <div
-      className="bg-cover bg-gradient-to-r 
-  from-blue-500 to-blue-300 h-fit"
-    >
+    <ThemeProvider>
+      <div
+        className="bg-cover bg-gradient-to-r 
+  from-blue-500 to-blue-300 h-fit "
+      >
 
-      <div className="bg-white/25 w-full flex flex-col h-fit">
-        {/* INPUT AND LOGO*/}
-        <div className="flex flex-col md:flex-row justify-between items-center p-12 ">
-          <FillGrid />
-          <Notifications />
+        <div className="bg-white/25 w-full flex flex-col h-fit">
+          {/* INPUT AND LOGO*/}
+          <div className="flex flex-col md:flex-row justify-between items-center p-12 ">
+            <FillGrid />
+            <Notifications />
 
-          <Input
-            handleSearch={handleSearch}
-            setLocation={setLocation}
-            handleButtonClick={handleButtonClick}
-          />
-              <DarkMode/>
-          <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 round-xl italic ">
-            ClimaTempo
-          </h1>
+            <Input
+              handleSearch={handleSearch}
+              setLocation={setLocation}
+              handleButtonClick={handleButtonClick}
+            />
+            <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 round-xl italic ">
+              ClimaTempo
+            </h1>
+          </div>
+          {content}
         </div>
-        {content}
       </div>
-    </div>
+    </ThemeProvider>
+
   );
 };
 

@@ -1,27 +1,21 @@
 import { FiSun, FiMoon } from "react-icons/fi";
 
 
-import React, { useState } from 'react';
 
-const DarkMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+import React from 'react';
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+const DarkModeToggle = ({ isDarkMode, toggleDarkMode }) => {
+    return (
+        <div
+            className={`dark-mode-toggle cursor-pointer p-2 transition-transform duration-slow transform ${isDarkMode ? 'translate-x-full' : 'translate-x-1/2'
+                }`}
+            onClick={toggleDarkMode}
+        >
 
-  return (
-    <div className={`App ${isDarkMode ? 'dark' : ''}`}>
-    
-      <button
-        className="bg-blue-500 text-white px-4 py-2 mt-4"
-        onClick={toggleDarkMode}
-      >
-        {isDarkMode ? <FiSun/> : <FiMoon/>}
-      </button>
-      
-    </div>
-  );
+            {isDarkMode ? (<FiMoon />) : (<FiSun />)}
+        </div>
+    );
 };
 
-export default DarkMode;
+export default DarkModeToggle;
+
