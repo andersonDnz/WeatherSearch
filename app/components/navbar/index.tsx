@@ -8,6 +8,7 @@ import Details from "../details";
 import Input from "../input";
 import FillGrid from "../fillGrid";
 import Notifications from "../notification";
+import DarkMode from "../darkMode";
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
@@ -85,13 +86,14 @@ const Navbar = () => {
         {/* INPUT AND LOGO*/}
         <div className="flex flex-col md:flex-row justify-between items-center p-12 ">
           <FillGrid />
-          <Notifications/>
+          <Notifications />
+
           <Input
             handleSearch={handleSearch}
             setLocation={setLocation}
             handleButtonClick={handleButtonClick}
           />
-
+              <DarkMode/>
           <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px-4 round-xl italic ">
             ClimaTempo
           </h1>
