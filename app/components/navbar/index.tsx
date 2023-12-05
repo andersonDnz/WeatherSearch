@@ -15,7 +15,7 @@ import ThemeProvider from "../themeProvider";
 <link rel="icon" href="/favicon.ico" sizes="any" />
 
 
-const Navbar = () => {
+const Navbar = ( ) => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");

@@ -1,12 +1,22 @@
 
-import React, { FC, ReactElement, ReactNode, useState } from 'react';
+import React, { FC, HTMLAttributes, ReactElement, ReactNode, useState } from 'react';
 
 
 interface ThemeProviderProps {
     children: ReactNode;
-}
+};
 
-const ThemeProvider: FC <ThemeProviderProps> = ({ children }) => {
+interface DivWithThemeProps extends HTMLAttributes<HTMLDivElement> {
+    isDarkMode?: boolean;
+    toggleDarkMode?: () => void;
+};
+
+const DivWithTheme: FC<DivWithThemeProps> = ({ isDarkMode, toggleDarkMode, ...rest }) => (
+    <div {...rest} />
+
+);
+
+const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
@@ -14,13 +24,11 @@ const ThemeProvider: FC <ThemeProviderProps> = ({ children }) => {
     };
 
     return (
-        <div className='bg-slate-600'>
-            <div className={`App ${isDarkMode ? 'dark' : ''}`}>
-                {React.Children.map(children, (child) =>
-                    React.cloneElement(child as ReactElement, { isDarkMode, toggleDarkMode })
-                )}
-            </div>
-        </div>
+        <DivWithTheme className='bg-slate-600'>
+            {React.Children.map(children, (child) =>
+                React.cloneElement(child as ReactElement)
+            )}
+        </DivWithTheme>
     );
 };
 
