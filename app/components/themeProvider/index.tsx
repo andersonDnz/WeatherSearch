@@ -1,7 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { FC, ReactElement, ReactNode, useState } from 'react';
 
-const ThemeProvider = ({ children }) => {
+
+interface ThemeProviderProps {
+    children: ReactNode;
+}
+
+const ThemeProvider: FC <ThemeProviderProps> = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
@@ -12,7 +17,7 @@ const ThemeProvider = ({ children }) => {
         <div className='bg-slate-600'>
             <div className={`App ${isDarkMode ? 'dark' : ''}`}>
                 {React.Children.map(children, (child) =>
-                    React.cloneElement(child, { isDarkMode, toggleDarkMode })
+                    React.cloneElement(child as ReactElement, { isDarkMode, toggleDarkMode })
                 )}
             </div>
         </div>
