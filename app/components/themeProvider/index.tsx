@@ -9,10 +9,12 @@ const ThemeProvider = ({ children }) => {
     };
 
     return (
-        <div className={`App ${isDarkMode ? 'dark' : ''}`}>
-            {React.Children.map(children, (child) =>
-                React.cloneElement(child, { isDarkMode, toggleDarkMode })
-            )}
+        <div className='bg-slate-600'>
+            <div className={`App ${isDarkMode ? 'dark' : ''}`}>
+                {React.Children.map(children, (child) =>
+                    React.cloneElement(child, { isDarkMode, toggleDarkMode })
+                )}
+            </div>
         </div>
     );
 };
