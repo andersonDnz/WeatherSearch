@@ -25,6 +25,5 @@ const config: Config = {
       'full': '100%',
     },
   },
-  plugins: [],
-}
-export default config
+};
+export default config;
